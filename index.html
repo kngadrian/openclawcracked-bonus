@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OpenClaw Cracked — Replay + Exclusive Bonuses</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --bg: #0a0a0f;
+      --bg2: #0f0f1a;
+      --bg3: #13131f;
+      --cyan: #00d4ff;
+      --cyan-dim: rgba(0, 212, 255, 0.15);
+      --cyan-glow: rgba(0, 212, 255, 0.4);
+      --purple: #7c3aed;
+      --purple-dim: rgba(124, 58, 237, 0.2);
+      --white: #ffffff;
+      --gray: #8b8fa8;
+      --card-bg: #0d0d1a;
+      --card-border: rgba(0, 212, 255, 0.12);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background-color: var(--bg);
+      color: var(--white);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* ── NOISE OVERLAY ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    /* ── AMBIENT GLOW ── */
+    .ambient {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(120px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .ambient-1 {
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(0,212,255,0.06) 0%, transparent 70%);
+      top: -200px; left: 50%; transform: translateX(-50%);
+    }
+    .ambient-2 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(124,58,237,0.08) 0%, transparent 70%);
+      bottom: 20%; right: -150px;
+    }
+    .ambient-3 {
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(0,212,255,0.05) 0%, transparent 70%);
+      bottom: 10%; left: -100px;
+    }
+
+    /* ── LAYOUT ── */
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    section {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── NAV BAR ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 16px 24px;
+      background: rgba(10,10,15,0.8);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(0,212,255,0.08);
+    }
+    .nav-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      color: var(--white);
+    }
+    .nav-logo span { color: var(--cyan); }
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 20px;
+      background: var(--cyan);
+      color: #000;
+      font-size: 13px;
+      font-weight: 700;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.9; transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 160px 0 80px;
+      text-align: center;
+    }
+
+    .replay-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: rgba(239,68,68,0.12);
+      border: 1px solid rgba(239,68,68,0.3);
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #f87171;
+      margin-bottom: 32px;
+    }
+    .pulse-dot {
+      width: 8px; height: 8px;
+      background: #ef4444;
+      border-radius: 50%;
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 0 0 rgba(239,68,68,0.6); }
+      50% { opacity: 0.7; transform: scale(1.2); box-shadow: 0 0 0 6px rgba(239,68,68,0); }
+    }
+
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 900;
+      letter-spacing: -2px;
+      line-height: 1.05;
+      margin-bottom: 24px;
+      background: linear-gradient(135deg, #ffffff 0%, #c7d2fe 50%, #00d4ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: clamp(16px, 2.5vw, 20px);
+      color: var(--gray);
+      max-width: 560px;
+      margin: 0 auto 48px;
+      font-weight: 400;
+      line-height: 1.7;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(0,212,255,0.2), transparent);
+      margin: 0 0 80px;
+    }
+
+    /* ── VIDEO ── */
+    .video-section {
+      padding: 0 0 100px;
+    }
+    .video-label {
+      text-align: center;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 20px;
+      opacity: 0.8;
+    }
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16/9;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(0,212,255,0.25);
+      box-shadow:
+        0 0 0 1px rgba(0,212,255,0.08),
+        0 0 40px rgba(0,212,255,0.12),
+        0 0 80px rgba(0,212,255,0.06),
+        0 32px 64px rgba(0,0,0,0.6);
+      background: #070710;
+      animation: videoPulse 4s ease-in-out infinite;
+    }
+    @keyframes videoPulse {
+      0%, 100% { box-shadow: 0 0 0 1px rgba(0,212,255,0.08), 0 0 40px rgba(0,212,255,0.12), 0 0 80px rgba(0,212,255,0.06), 0 32px 64px rgba(0,0,0,0.6); }
+      50% { box-shadow: 0 0 0 1px rgba(0,212,255,0.2), 0 0 60px rgba(0,212,255,0.2), 0 0 120px rgba(0,212,255,0.1), 0 32px 64px rgba(0,0,0,0.6); }
+    }
+    .video-wrapper iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .video-fallback {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      color: var(--gray);
+      font-size: 15px;
+      pointer-events: none;
+    }
+    .video-fallback .spinner {
+      width: 40px; height: 40px;
+      border: 2px solid rgba(0,212,255,0.15);
+      border-top-color: var(--cyan);
+      border-radius: 50%;
+      animation: spin 1.2s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── BONUSES ── */
+    .bonuses-section {
+      padding: 0 0 100px;
+    }
+    .section-eyebrow {
+      text-align: center;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--cyan);
+      opacity: 0.8;
+      margin-bottom: 16px;
+    }
+    .section-title {
+      text-align: center;
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      margin-bottom: 12px;
+    }
+    .section-sub {
+      text-align: center;
+      color: var(--gray);
+      font-size: 16px;
+      margin-bottom: 56px;
+    }
+
+    .bonus-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 24px;
+    }
+
+    .bonus-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 36px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .bonus-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(0,212,255,0.03) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .bonus-card:hover {
+      border-color: rgba(0,212,255,0.5);
+      box-shadow: 0 0 30px rgba(0,212,255,0.15), 0 16px 48px rgba(0,0,0,0.4);
+      transform: translateY(-4px);
+    }
+    .bonus-icon {
+      font-size: 36px;
+      line-height: 1;
+    }
+    .bonus-number {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--cyan);
+      opacity: 0.7;
+    }
+    .bonus-title {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      line-height: 1.3;
+    }
+    .bonus-desc {
+      font-size: 14px;
+      color: var(--gray);
+      line-height: 1.65;
+      flex: 1;
+    }
+    .bonus-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 12px 20px;
+      background: rgba(0,212,255,0.08);
+      border: 1px solid rgba(0,212,255,0.25);
+      color: var(--cyan);
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 8px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.2s, border-color 0.2s;
+      margin-top: 8px;
+    }
+    .bonus-btn:hover {
+      background: rgba(0,212,255,0.15);
+      border-color: rgba(0,212,255,0.5);
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      padding: 0 0 120px;
+    }
+    .cta-box {
+      background: linear-gradient(135deg, rgba(0,212,255,0.06) 0%, rgba(124,58,237,0.08) 100%);
+      border: 1px solid rgba(0,212,255,0.15);
+      border-radius: 24px;
+      padding: 72px 48px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-box::before {
+      content: '';
+      position: absolute;
+      top: -1px; left: 50%; transform: translateX(-50%);
+      width: 60%; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+    }
+    .cta-box h2 {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      margin-bottom: 12px;
+    }
+    .cta-box p {
+      font-size: 16px;
+      color: var(--gray);
+      margin-bottom: 40px;
+    }
+    .cta-main-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 18px 40px;
+      background: var(--cyan);
+      color: #000;
+      font-size: 17px;
+      font-weight: 800;
+      border-radius: 10px;
+      text-decoration: none;
+      letter-spacing: -0.3px;
+      transition: all 0.25s;
+      box-shadow: 0 0 30px rgba(0,212,255,0.3), 0 8px 32px rgba(0,0,0,0.3);
+      margin-bottom: 20px;
+    }
+    .cta-main-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 50px rgba(0,212,255,0.5), 0 12px 40px rgba(0,0,0,0.4);
+    }
+    .cta-subtext {
+      font-size: 13px;
+      color: var(--gray);
+      opacity: 0.7;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding: 32px 24px;
+      text-align: center;
+      font-size: 13px;
+      color: var(--gray);
+      opacity: 0.5;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── SCROLL FADE-IN ── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .fade-in-delay-1 { transition-delay: 0.1s; }
+    .fade-in-delay-2 { transition-delay: 0.2s; }
+    .fade-in-delay-3 { transition-delay: 0.3s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .hero { padding: 120px 0 60px; }
+      .cta-box { padding: 48px 24px; }
+      .bonus-grid { grid-template-columns: 1fr; }
+      .nav-cta { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient glows -->
+  <div class="ambient ambient-1"></div>
+  <div class="ambient ambient-2"></div>
+  <div class="ambient ambient-3"></div>
+
+  <!-- Nav -->
+  <nav>
+    <div class="nav-inner">
+      <div class="nav-logo">Open<span>Claw</span> Cracked</div>
+      <a href="https://callfluent.com/OpenClawCracked" class="nav-cta" target="_blank" rel="noopener">
+        Get OpenClaw →
+      </a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="replay-badge">
+        <span class="pulse-dot"></span>
+        Live Replay
+      </div>
+      <h1>You Were There When<br/>Everything Changed.</h1>
+      <p>Watch the full OpenClaw Cracked replay + grab your exclusive bonuses below.</p>
+    </div>
+  </section>
+
+  <!-- Video -->
+  <section class="video-section">
+    <div class="container">
+      <div class="video-label fade-in">▶ Full Session Replay</div>
+      <div class="video-wrapper fade-in fade-in-delay-1">
+        <div class="video-fallback">
+          <div class="spinner"></div>
+          <span>Replay uploading — check back in 30 minutes.</span>
+        </div>
+        <iframe
+          id="replay-embed"
+          src="REPLAY_URL_HERE"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen
+          title="OpenClaw Cracked — Full Replay"
+        ></iframe>
+      </div>
+    </div>
+  </section>
+
+  <div class="container"><div class="divider"></div></div>
+
+  <!-- Bonuses -->
+  <section class="bonuses-section">
+    <div class="container">
+      <div class="section-eyebrow fade-in">🎁 Attendee Exclusives</div>
+      <h2 class="section-title fade-in fade-in-delay-1">Your Exclusive Bonuses</h2>
+      <p class="section-sub fade-in fade-in-delay-2">Everything you need to execute — starting today.</p>
+
+      <div class="bonus-grid">
+        <!-- Card 1 -->
+        <div class="bonus-card fade-in fade-in-delay-1">
+          <div class="bonus-icon">📘</div>
+          <div class="bonus-number">Bonus 01</div>
+          <div class="bonus-title">OpenClaw Cracked PDF Playbook</div>
+          <div class="bonus-desc">Every system revealed in today's session, documented. Step-by-step so you can build without rewatching.</div>
+          <a href="https://callfluent.com/OpenClawCracked" class="bonus-btn" target="_blank" rel="noopener">
+            Download Playbook →
+          </a>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="bonus-card fade-in fade-in-delay-2">
+          <div class="bonus-icon">🗺️</div>
+          <div class="bonus-number">Bonus 02</div>
+          <div class="bonus-title">The 35-Agent Org Chart</div>
+          <div class="bonus-desc">Adrian's exact AI org structure you can deploy today. The full hierarchy, roles, and wiring — ready to clone.</div>
+          <a href="https://callfluent.com/OpenClawCracked" class="bonus-btn" target="_blank" rel="noopener">
+            Get the Org Chart →
+          </a>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="bonus-card fade-in fade-in-delay-3">
+          <div class="bonus-icon">🛡️</div>
+          <div class="bonus-number">Bonus 03</div>
+          <div class="bonus-title">Priority Support Access</div>
+          <div class="bonus-desc">Direct line for 30 days post-webinar. Questions, blockers, or edge cases — get them resolved fast.</div>
+          <a href="https://callfluent.com/OpenClawCracked" class="bonus-btn" target="_blank" rel="noopener">
+            Activate Access →
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-box fade-in">
+        <h2>Ready to run your business<br/>on autopilot?</h2>
+        <p>Join the founders already running 35-agent AI empires.</p>
+        <div>
+          <a href="https://callfluent.com/OpenClawCracked" class="cta-main-btn" target="_blank" rel="noopener">
+            Get OpenClaw Now →
+          </a>
+        </div>
+        <div class="cta-subtext">Limited time offer — pricing increases after this window closes.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    © 2026 CallFluent AI. All rights reserved.
+  </footer>
+
+  <script>
+    // Scroll fade-in
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            observer.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -40px 0px' }
+    );
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // If the replay URL hasn't been set, keep showing fallback
+    // Once src is a real URL, the iframe loads and overlays the fallback
+    const iframe = document.getElementById('replay-embed');
+    if (iframe && iframe.src && !iframe.src.includes('REPLAY_URL_HERE')) {
+      document.querySelector('.video-fallback').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
